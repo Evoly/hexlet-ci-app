@@ -6,7 +6,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ 'd24943b8-b7d6-4d94-bdd3-4a8b86623010'  }}
       # Ставим зависимости
       - run: npm install
       # Запускаем линтер
       - run: npm run lint
+      
